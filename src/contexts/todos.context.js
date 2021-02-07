@@ -7,8 +7,7 @@ export function TodosProvider(props) {
   const todosAndMethods = useTodosState([]);
   return (
     <TodosContext.Provider value={todosAndMethods}>
-      {" "}
-      {props.children}{" "}
+      {props.children}
     </TodosContext.Provider>
   );
 }
