@@ -1,11 +1,14 @@
 import useToggle from "./hooks/useToggle";
+import { TodosContext } from "./contexts/todos.context";
+import { useContext } from "react";
 import EditTodoForm from "./EditTodoForm";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 
-function Todo({ todo, updateTodo, deleteTodo, toggleCompletion }) {
+function Todo({ todo }) {
   const [isEditing, toggleIsEditing] = useToggle(false);
+  const { deleteTodo, toggleCompletion } = useContext(TodosContext);
   return (
     <ListGroup.Item
       className="d-flex justify-content-between align-items-center"
@@ -18,7 +21,6 @@ function Todo({ todo, updateTodo, deleteTodo, toggleCompletion }) {
         <EditTodoForm
           todoText={todo.text}
           todoId={todo.id}
-          updateTodo={updateTodo}
           toggleIsEditing={toggleIsEditing}
         />
       ) : (

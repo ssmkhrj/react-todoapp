@@ -1,14 +1,17 @@
 import useFormState from "./hooks/useFormState";
+import { TodosContext } from "./contexts/todos.context";
+import { useContext } from "react";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 
-function AddTodoForm(props) {
+function AddTodoForm() {
   const [todo, handleTodoChange, resetTodo] = useFormState("");
+  const { addNewTodo } = useContext(TodosContext);
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    props.addNewTodo(todo);
+    addNewTodo(todo);
     resetTodo();
   };
   return (
