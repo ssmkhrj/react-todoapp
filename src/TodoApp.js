@@ -1,4 +1,5 @@
 import useTodosState from "./hooks/useTodosState";
+import { TodosProvider } from "./contexts/todos.context";
 import AddTodoForm from "./AddTodoForm";
 import TodoList from "./TodoList";
 
@@ -13,13 +14,15 @@ function TodoApp() {
 
   return (
     <section className="container mt-5" style={{ maxWidth: 700 }}>
-      <AddTodoForm addNewTodo={addNewTodo} />
-      <TodoList
-        todos={todos}
-        updateTodo={updateTodo}
-        deleteTodo={deleteTodo}
-        toggleCompletion={toggleCompletion}
-      />
+      <TodosProvider>
+        <AddTodoForm addNewTodo={addNewTodo} />
+        <TodoList
+          todos={todos}
+          updateTodo={updateTodo}
+          deleteTodo={deleteTodo}
+          toggleCompletion={toggleCompletion}
+        />
+      </TodosProvider>
     </section>
   );
 }
