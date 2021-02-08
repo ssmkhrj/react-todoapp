@@ -8,12 +8,13 @@ import Button from "react-bootstrap/Button";
 
 function AddTodoForm() {
   const [todo, handleTodoChange, resetTodo] = useFormState("");
-  const { addNewTodo } = useContext(TodosContext);
+  const { dispatch } = useContext(TodosContext);
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    addNewTodo(todo);
+    dispatch({ type: "ADD", newTodo: todo });
     resetTodo();
   };
+  console.log("ADD NEW FORM RENDER");
   return (
     <Form onSubmit={handleSubmit}>
       <InputGroup className="mb-3">

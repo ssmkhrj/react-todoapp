@@ -8,10 +8,10 @@ import Button from "react-bootstrap/Button";
 
 const EditTodoForm = ({ todoText, todoId, toggleIsEditing }) => {
   const [text, setText] = useFormState(todoText);
-  const { updateTodo } = useContext(TodosContext);
+  const { dispatch } = useContext(TodosContext);
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    updateTodo(todoId, text);
+    dispatch({ type: "UPDATE", todoId: todoId, todoText: text });
     toggleIsEditing();
   };
   return (

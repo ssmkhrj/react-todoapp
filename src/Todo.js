@@ -8,7 +8,7 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 function Todo({ todo }) {
   const [isEditing, toggleIsEditing] = useToggle(false);
-  const { deleteTodo, toggleCompletion } = useContext(TodosContext);
+  const { dispatch } = useContext(TodosContext);
   return (
     <ListGroup.Item
       className="d-flex justify-content-between align-items-center"
@@ -31,7 +31,9 @@ function Todo({ todo }) {
               flex: 1,
               textDecoration: todo.isCompleted ? "line-through" : "none",
             }}
-            onClick={() => toggleCompletion(todo.id)}
+            onClick={() =>
+              dispatch({ type: "TOGGLECOMPLETION", todoId: todo.id })
+            }
           >
             {todo.text}
           </div>
@@ -42,7 +44,7 @@ function Todo({ todo }) {
             <Button
               variant="primary"
               size="sm"
-              onClick={() => deleteTodo(todo.id)}
+              onClick={() => dispatch({ type: "DELETE", todoId: todo.id })}
             >
               <i className="far fa-trash-alt"></i>
             </Button>
