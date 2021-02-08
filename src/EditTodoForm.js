@@ -1,6 +1,6 @@
 import useFormState from "./hooks/useFormState";
 import { useContext } from "react";
-import { TodosContext } from "./contexts/todos.context";
+import { DispatchContext } from "./contexts/todos.context";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
@@ -8,7 +8,7 @@ import Button from "react-bootstrap/Button";
 
 const EditTodoForm = ({ todoText, todoId, toggleIsEditing }) => {
   const [text, setText] = useFormState(todoText);
-  const { dispatch } = useContext(TodosContext);
+  const dispatch = useContext(DispatchContext);
   const handleSubmit = (evt) => {
     evt.preventDefault();
     dispatch({ type: "UPDATE", todoId: todoId, todoText: text });

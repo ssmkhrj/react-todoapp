@@ -1,5 +1,5 @@
 import useFormState from "./hooks/useFormState";
-import { TodosContext } from "./contexts/todos.context";
+import { DispatchContext } from "./contexts/todos.context";
 import { useContext } from "react";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -8,13 +8,12 @@ import Button from "react-bootstrap/Button";
 
 function AddTodoForm() {
   const [todo, handleTodoChange, resetTodo] = useFormState("");
-  const { dispatch } = useContext(TodosContext);
+  const dispatch = useContext(DispatchContext);
   const handleSubmit = (evt) => {
     evt.preventDefault();
     dispatch({ type: "ADD", newTodo: todo });
     resetTodo();
   };
-  console.log("ADD NEW FORM RENDER");
   return (
     <Form onSubmit={handleSubmit}>
       <InputGroup className="mb-3">

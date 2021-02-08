@@ -4,7 +4,7 @@ import { TodosContext } from "./contexts/todos.context";
 import ListGroup from "react-bootstrap/ListGroup";
 
 const TodoList = () => {
-  const { todos } = useContext(TodosContext);
+  const todos = useContext(TodosContext);
   return (
     <ListGroup>
       {todos.map((todo) => (
