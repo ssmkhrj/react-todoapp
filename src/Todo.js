@@ -1,6 +1,6 @@
 import useToggle from "./hooks/useToggle";
 import { DispatchContext } from "./contexts/todos.context";
-import { useContext } from "react";
+import { useContext, memo } from "react";
 import EditTodoForm from "./EditTodoForm";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
@@ -55,4 +55,4 @@ function Todo({ todo }) {
   );
 }
 
-export default Todo;
+export default memo(Todo);
